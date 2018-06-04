@@ -1,0 +1,70 @@
+body {
+    font-family: Arial;
+    color: white;
+}
+
+body > h3 {
+    color: #3cb371
+}
+
+body {
+    background-color: lightslategrey;
+}
+
+#thumb {
+    float: left;
+    margin-right: 10px;
+}
+
+#cover {
+}
+
+#movies_lst {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#movies_lst li {
+    flex: 0 0 auto;
+}
+
+a {
+    color: darkred;
+    font-style: italic;
+    font-family: Verdana;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+dl {
+    font-size: 0.8em;
+}
+
+dl > dt {
+    color: greenyellow;
+}
+
+.h3_title {
+    color: mediumseagreen;
+}
+
+.img_widtth30 {
+    width: 30%;
+    height: auto;
+}
+
+.a_blue {
+    color: darkblue;
+}
+
+.drop-cap {
+    font-size: 1.5em;
+}
+
+.clear5 {
+    clear: both;
+    padding: 5px 0;
+}
