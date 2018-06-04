@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades Exercies</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
+<body>
+<form action="http://mumstudents.org/params.php" method="post">
+    <fieldset style="width: 800px; margin: 0 auto">
+        <legend>Retrieve your grade</legend>
+        <div style="width: 600px; margin: 0 auto;">
+            <strong class="column">Name: </strong>
+            <input type="text" name="txtName" size=20>
+            <div class="clear5"></div>
+            <strong class="column">Student ID: </strong>
+            <input type="text" name="txtID" size=7 maxlength="6">
+            <div class="clear5"></div>
+            <strong class="column">Entry:</strong>
+            <input type="radio" name="rdEntry" id="rdOct2017" value="October 2017"> <label for="rdOct2017">October 2017</label>
+            <input type="radio" name="rdEntry" id="rdJan2018" value="January 2018"><label for="rdJan2018">January 2018</label>
+            <input type="radio" name="rdEntry" id="rdApr2018" value="April 2018"><label for="rdApr2018">April 2018</label>
+            <div class="clear5"></div>
+            <strong class="column">Assigment:</strong>
+            <select name="dpAssigment">
+                <option selected>My Homepage Lab</option>
+                <option>About Me Lab</option>
+                <option>Servlet Introduction Lab</option>
+                <option>Simple Calculator Lab</option>
+                <option>Quiz Servlet Lab</option>
+                <option>JSP Version Quiz Servlet Lab</option>
+                <option>JSP Custom Tags Lab</option>
+                <option>JSP Custom Tags Lab</option>
+                <option>Decorate My Text</option>
+                <option>Modules and Closure</option>
+                <option>Mouse Maze</option>
+                <option>Homework 1: Recipe</option>
+                <option>Homework 2: Movie Review</option>
+                <option>Homework 4: NerdLuv</option>
+                <option>Homework 8: Javascript and ASCII Animation</option>
+                <option>Homework 9: DOM and Events: 15 Puzzle</option>
+            </select>
+            <div class="clear5"></div>
+            <strong class="column">&nbsp;</strong><input type="submit" value="Get Grade!"/>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

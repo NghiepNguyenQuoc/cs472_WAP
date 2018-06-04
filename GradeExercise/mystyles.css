@@ -1,0 +1,89 @@
+body {
+
+    font-family: "Verdana", "Geneva", sans-serif;
+}
+
+fieldset {
+    border: 2px outset #64DD17;
+    background: #FFF9C4 url("Maharishi_University_of_Management_logo_1.png") no-repeat center;
+    background-size: 300px;
+    border-radius: 10px;
+    height: 400px;
+}
+
+legend {
+    background-color: #64FFDA;
+    border: 1px outset gray;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .87);
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.5em;
+
+}
+
+input[type=text], select {
+    height: 25px;
+    vertical-align: center;
+    padding: 0 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+fieldset  label {
+    font-weight: bold;
+    color: darkorchid;
+    font-size: 16px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+input[type=submit] :after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+input[type=submit] :active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+fieldset strong,
+ul strong,
+fieldset label.left,
+fieldset .column {
+    float: left;
+    padding-right: 10px;
+    line-height: 30px;
+    width: 11em;
+    text-align: right;
+}
+
+.clear5 {
+    clear: both;
+    height: 5px;
+}
