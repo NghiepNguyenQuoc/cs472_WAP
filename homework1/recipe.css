@@ -1,0 +1,87 @@
+
+body {
+    background-color: black;
+    margin: 0 auto;
+    color: #404040;
+    font-size: 11pt;
+    font-family: Georgia, Garamond, sans-serif;
+}
+
+#container {
+    background: white url("images/silverware.jpg") fixed;
+    padding: 8px;
+    margin: 0 auto;
+    width: 1024px;
+    font-family: "Lucida Sans Unicode, Helvetica, Arial", sans-serif;
+}
+
+#container h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 0.25em;
+}
+
+#bottom {
+    font-family: "Courier New", sans-serif;
+    text-align: right;
+}
+
+.subtitle {
+    background-color: #F0F0F0;
+    color: #A4A400;
+    font-size: 18pt;
+    letter-spacing: 0.25em;
+    font-weight: bold;
+    font-family: "Lucida Sans Unicode, Helvetica, Arial", sans-serif;
+    text-decoration: underline;
+}
+
+.s_through {
+    text-decoration: line-through;
+}
+
+a {
+    color: #A4A400;
+}
+
+ul{
+    list-style-image: url('images/pie_bullet.png');
+}
+
+.s_bold {
+    font-weight: bold;
+}
+
+.s_underline {
+    text-decoration: underline;
+}
+
+.yellow_box {
+    margin: 0 50px;
+    background-color: #FFFFA8;
+    font-style: italic;
+}
+.border_right{
+    width: 400px;
+    margin: 5px 0;
+    text-align: left;
+    border-right: 1px solid black;
+}
+
+.clear5 {
+    clear: both;
+    height: 5px;
+}
+
+.clear10 {
+    clear: both;
+    height: 10px;
+}
+
+.clear15 {
+    clear: both;
+    height: 15px;
+}
