@@ -1,4 +1,4 @@
-<%@ taglib prefix="mytag" uri="/WEB-INF/tld/TldDemo" %>
+<%@ taglib prefix="aspx" uri="/WEB-INF/tld/LabelDemo" %>
 <%--
   Created by IntelliJ IDEA.
   User: 986375
@@ -18,6 +18,6 @@
     <title>JSTL and Custom Tags Lecture</title>
 </head>
 <body>
-<mytag:Head thecolor='red' words='hello'/>
+<aspx:Label color='red' text='hello'/>
 </body>
 </html>

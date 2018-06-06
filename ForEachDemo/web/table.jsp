@@ -1,3 +1,4 @@
+<%@ page import="qnguyen.Student" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -16,12 +17,27 @@
 </head>
 <body>
 <table>
-    <c:forEach var="student" items="${students}">
+    <c:forEach var="item" items="${requestScope.students}">
         <tr>
-            <td>${student.name}</td>
-            <td>${student.age}</td>
+            <td>${item.name}
+            </td>
+            <td>${item.age}
+            </td>
         </tr>
     </c:forEach>
+    <%--<%--%>
+        <%--Student[] students = (Student[]) request.getAttribute("students");--%>
+        <%--for (Student item : students) {--%>
+    <%--%>--%>
+    <%--<tr>--%>
+        <%--<td><%= item.getName()%>--%>
+        <%--</td>--%>
+        <%--<td><%=item.getAge()%>--%>
+        <%--</td>--%>
+    <%--</tr>--%>
+    <%--<%--%>
+        <%--}--%>
+    <%--%>--%>
 </table>
 </body>
 </html>
