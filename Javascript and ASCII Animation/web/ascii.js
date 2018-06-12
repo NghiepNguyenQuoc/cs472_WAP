@@ -1,34 +1,51 @@
 "use strict";
-var duration = 250;
-var objInterval;
-var currentFrame = 0;
-var presetAnimation;
+const NORMAL_SPEED = 250;
+const TURBO_SPEED = 50;
+let duration = NORMAL_SPEED;
+let objInterval;
+let currentFrame = 0;
+let presetAnimation;
 
+/**
+ * start animation event
+ */
 function onStart() {
-    if (presetAnimation !== "changeanimation")
+    if (presetAnimation !== "changeanimation") {
         presetAnimation = document.getElementById('mytextarea').value;
+    }
     objInterval = setInterval(generateAnimation, duration);
     preAnimation(true);
 }
 
+/**
+ * generate animation from text.
+ */
 function generateAnimation() {
-    var e = document.getElementById("aminationopt");
-    var abc = e.options[e.selectedIndex].value;
-    var arrAnimation = ANIMATIONS[abc].split("=====\n");
+    let e = document.getElementById("aminationopt");
+    let abc = e.options[e.selectedIndex].value;
+    let arrAnimation = ANIMATIONS[abc].split("=====\n");
     if (presetAnimation !== null && presetAnimation !== "changeanimation") {
         arrAnimation.unshift(presetAnimation);
     }
-    if (currentFrame >= arrAnimation.length)
+    if (currentFrame >= arrAnimation.length) {
         currentFrame = 0;
+    }
     document.getElementById('mytextarea').value = arrAnimation[currentFrame++];
 }
 
+/**
+ * disable/enable UI
+ * @param {boolean} isStart The second number.
+ */
 function preAnimation(isStart) {
     document.getElementById('startBtn').disabled = isStart;
     document.getElementById('aminationopt').disabled = isStart;
     document.getElementById('stopBtn').disabled = !isStart;
 }
 
+/**
+ * stop button click event
+ */
 function onStop() {
     preAnimation(false);
     clearInterval(objInterval);
@@ -37,19 +54,19 @@ function onStop() {
     }
 }
 
-function onChangeAnimation() {
-    // presetAnimation = "changeanimation";
-    // var e = document.getElementById("aminationopt");
-    // document.getElementById('mytextarea').value = ANIMATIONS[e.options[e.selectedIndex].value];
-}
-
+/**
+ * change size event
+ */
 function onChangeSize() {
     document.getElementById("mytextarea").style.fontSize = document.getElementById("sizeopt").value;
 }
 
+/**
+ * stop button click event
+ */
 function onCheckSpeed() {
-    var checkedValue = document.getElementById("speedcheckbox").checked;
-    duration = checkedValue ? 50 : 250;
+    let checkedValue = document.getElementById("speedcheckbox").checked;
+    duration = checkedValue ? TURBO_SPEED : NORMAL_SPEED;
     clearInterval(objInterval);
     objInterval = setInterval(generateAnimation, duration);
 }
