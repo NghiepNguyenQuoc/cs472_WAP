@@ -1,38 +1,55 @@
+"use strict";
 var duration = 250;
 var objInterval;
 var currentFrame = 0;
-$("#startBtn").click(function () {
-    objInterval = setInterval(generateAnimation, duration);
-});
+var presetAnimation;
 
-function generateAnimation() {
-    var abc = $('#aminationopt').find(":selected").text();
-    var arrAnimation = ANIMATIONS[abc].split("=====\n");
-    if (currentFrame >= arrAnimation.length)
-        currentFrame = 0;
-    $('#mytextarea').val(arrAnimation[currentFrame++]);
+function onStart() {
+    if (presetAnimation !== "changeanimation")
+        presetAnimation = document.getElementById('mytextarea').value;
+    objInterval = setInterval(generateAnimation, duration);
+    preAnimation(true);
 }
 
-$("#stopBtn").click(function () {
-    alert("1234");
-})
-$('#aminationopt').on('change', function () {
-    // alert("123121");
+function generateAnimation() {
+    var e = document.getElementById("aminationopt");
+    var abc = e.options[e.selectedIndex].value;
+    var arrAnimation = ANIMATIONS[abc].split("=====\n");
+    if (presetAnimation !== null && presetAnimation !== "changeanimation") {
+        arrAnimation.unshift(presetAnimation);
+    }
+    if (currentFrame >= arrAnimation.length)
+        currentFrame = 0;
+    document.getElementById('mytextarea').value = arrAnimation[currentFrame++];
+}
 
-});
-$('#sizeopt').on('change', function () {
-    $("#mytextarea").css({'font-size': $(this).val()});
-});
+function preAnimation(isStart) {
+    document.getElementById('startBtn').disabled = isStart;
+    document.getElementById('aminationopt').disabled = isStart;
+    document.getElementById('stopBtn').disabled = !isStart;
+}
 
-$("#speedcheckbox").change(function () {
-    duration = this.checked ? 50 : 250
+function onStop() {
+    preAnimation(false);
     clearInterval(objInterval);
-    objInterval = setInterval(generateAnimation, duration)
-});
-//
-// $("#aminationopt").change(function() {
-//    alert($(this).val());
-// });
-//
-// var conceptName = $('#aminationopt').find(":selected").text();
-// alert(conceptName);
+    if (presetAnimation !== null && presetAnimation !== "" && presetAnimation !== "changeanimation") {
+        document.getElementById('mytextarea').value = presetAnimation;
+    }
+}
+
+function onChangeAnimation() {
+    // presetAnimation = "changeanimation";
+    // var e = document.getElementById("aminationopt");
+    // document.getElementById('mytextarea').value = ANIMATIONS[e.options[e.selectedIndex].value];
+}
+
+function onChangeSize() {
+    document.getElementById("mytextarea").style.fontSize = document.getElementById("sizeopt").value;
+}
+
+function onCheckSpeed() {
+    var checkedValue = document.getElementById("speedcheckbox").checked;
+    duration = checkedValue ? 50 : 250;
+    clearInterval(objInterval);
+    objInterval = setInterval(generateAnimation, duration);
+}
