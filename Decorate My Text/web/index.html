@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Decorator</title>
+    <link href="decoratemytext.css" type="text/css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="decoratemytext.js"></script>
+
+
+    <!-- link to your script file here -->
+
+</head>
+
+<body>
+<h1>Text Decorator</h1>
+
+<div>
+    <img src="decorated.gif" alt="very decorated!"/>
+</div>
+
+<!-- Your UI controls go here -->
+<!-- Your UI controls go here -->
+<fieldset>
+    <legend>Text</legend>
+    <textarea rows="4" cols="30" id="textarea1">Sample Item 1 Sample Item 2
+    </textarea>
+</fieldset>
+
+<fieldset>
+    <legend>Decoration</legend>
+    <button onclick="biggerClick();">Bigger Decoration!</button>
+    <br/>
+    <input type="checkbox" id="bling" onchange="onCheckChange()"/> <label for="bling">Bling</label>
+    <br/>
+    <button id="piglatin" onclick="fPigLatin();">Igpay Atinlay</button>
+    <br/>
+    <button id="malkovitch" onclick="fMalkovich();">Malkovitch</button>
+</fieldset>
+</body>
+</html>
