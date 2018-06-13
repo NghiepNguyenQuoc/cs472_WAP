@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        var accountInfoList;
-        var createAccount = (function () {
+        var accountInfoList = [];
+        var createAccount = function () {
             var accountName, balance;
 
-            function create(name, deposit) {
-                accountName = name;
-                balance = deposit;
-            }
-
             return {
-                accountName: accountName,
-                balance: balance
+                create: function (name, deposit) {
+                    accountName = name;
+                    balance = deposit;
+                },
+                toString: function () {
+                    return "Account name: " + accountName + " Balance: " + balance + "\n";
+                }
             }
-        })();
+        };
 
         function onCreate() {
-            var account1 = createAccount();
-            accountInfoList.push(account1.)
+            var name = document.getElementById("txtAccountName").value;
+            var deposit = document.getElementById("txtDeposit").value;
+            var newAccount = createAccount();
+            accountInfoList[accountInfoList.length] = newAccount.create(name, deposit);
+            document.getElementById("mytextarea").value += newAccount.toString();
         }
 
     </script>
