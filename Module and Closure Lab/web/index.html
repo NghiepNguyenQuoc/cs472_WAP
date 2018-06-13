@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var accountInfoList;
+        var createAccount = (function () {
+            var accountName, balance;
+
+            function create(name, deposit) {
+                accountName = name;
+                balance = deposit;
+            }
+
+            return {
+                accountName: accountName,
+                balance: balance
+            }
+        })();
+
+        function onCreate() {
+            var account1 = createAccount();
+            accountInfoList.push(account1.)
+        }
+
+    </script>
+
+</head>
+<body>
+<label>Account Name:</label><input type="text" id="txtAccountName"/><br/>
+<label>Deposit: </label><input type="text" id="txtDeposit"/><br/>
+<input type="button" value="Create new account" id="btnCreate" onclick="onCreate();"/><br/>
+<textarea rows="5" cols="60" id="mytextarea"></textarea>
+</body>
+</html>
