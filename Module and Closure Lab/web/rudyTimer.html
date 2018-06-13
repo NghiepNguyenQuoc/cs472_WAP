@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var timer = null;
+        var rudyTimer = function () {
+            if (timer === null) {
+                timer = setInterval(rudy, 1000);
+            }
+            else {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        function rudy() { // called each time the timer goes off
+            document.getElementById("output").innerHTML += "Rudy!";
+        }
+
+    </script>
+</head>
+<body>
+<button onclick="rudyTimer();">Click me!</button>
+<br/>
+<div id="output"></div>
+</body>
+</html>
