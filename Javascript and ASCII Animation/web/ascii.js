@@ -14,7 +14,6 @@ function onStart() {
         presetAnimation = document.getElementById('mytextarea').value;
     }
     objInterval = setInterval(generateAnimation, duration);
-    preAnimation(true);
 }
 
 /**
@@ -23,14 +22,21 @@ function onStart() {
 function generateAnimation() {
     let e = document.getElementById("aminationopt");
     let abc = e.options[e.selectedIndex].value;
-    let arrAnimation = ANIMATIONS[abc].split("=====\n");
-    if (presetAnimation !== null && presetAnimation !== "changeanimation") {
-        arrAnimation.unshift(presetAnimation);
+    if (ANIMATIONS[abc] !== null && ANIMATIONS[abc] !== "") {
+        let arrAnimation = ANIMATIONS[abc].split("=====\n");
+        if (presetAnimation !== null && presetAnimation !== "changeanimation") {
+            arrAnimation.unshift(presetAnimation);
+        }
+        if (currentFrame >= arrAnimation.length) {
+            currentFrame = 0;
+        }
+        document.getElementById('mytextarea').value = arrAnimation[currentFrame++];
+        preAnimation(true);
+    } else if (ANIMATIONS[abc] === null) {
+
+    } else {
+        clearInterval(objInterval);
     }
-    if (currentFrame >= arrAnimation.length) {
-        currentFrame = 0;
-    }
-    document.getElementById('mytextarea').value = arrAnimation[currentFrame++];
 }
 
 /**
@@ -55,6 +61,14 @@ function onStop() {
 }
 
 /**
+ * change animation event
+ */
+function onChangeAnimation() {
+    document.getElementById("mytextarea").value = "";
+    presetAnimation = "";
+}
+
+/**
  * change size event
  */
 function onChangeSize() {
@@ -67,6 +81,9 @@ function onChangeSize() {
 function onCheckSpeed() {
     let checkedValue = document.getElementById("speedcheckbox").checked;
     duration = checkedValue ? TURBO_SPEED : NORMAL_SPEED;
-    clearInterval(objInterval);
-    objInterval = setInterval(generateAnimation, duration);
+    var mytextare = document.getElementById('mytextarea').value;
+    if (mytextare !== null && mytextare !== "") {
+        clearInterval(objInterval);
+        objInterval = setInterval(generateAnimation, duration);
+    }
 }

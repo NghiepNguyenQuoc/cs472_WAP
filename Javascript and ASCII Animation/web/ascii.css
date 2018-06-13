@@ -38,6 +38,18 @@ body {
     right: 0;
 }
 
+#startBtn, #stopBtn,#aminationopt,#sizeopt {
+    color: black;
+    background-color: green;
+    font-weight: bold;
+}
+
+#startBtn:disabled, #stopBtn:disabled,#aminationopt:disabled {
+    color: white;
+    background-color: gray;
+    font-weight: normal;
+}
+
 fieldset {
     border: 5px black solid;
     float: left;
