@@ -5,35 +5,31 @@
     <title>Title</title>
     <script>
         var accountInfoList = [];
-        var createAccount = function () {
-            var accountName, balance;
+        var newAccount = (function () {
+            function Account(accountName, balance) {
+                this.accountName = accountName;
+                this.balance = balance;
+            }
 
             return {
-                create: function (name, deposit) {
-                    accountName = name;
-                    balance = deposit;
-                },
-                toString: function () {
-                    return "Account name: " + accountName + " Balance: " + balance + "\n";
+                create: function () {
+                    var name = document.getElementById("txtAccountName").value;
+                    var deposit = document.getElementById("txtDeposit").value;
+                    var acc = new Account(name, deposit);
+                    accountInfoList[accountInfoList.length] = acc;
+
+                    document.getElementById("mytextarea").value +=
+                        "Account name: " + acc.accountName + " Balance: " + acc.balance + "\n";
                 }
             }
-        };
-
-        function onCreate() {
-            var name = document.getElementById("txtAccountName").value;
-            var deposit = document.getElementById("txtDeposit").value;
-            var newAccount = createAccount();
-            accountInfoList[accountInfoList.length] = newAccount.create(name, deposit);
-            document.getElementById("mytextarea").value += newAccount.toString();
-        }
-
+        })();
     </script>
 
 </head>
 <body>
 <label>Account Name:</label><input type="text" id="txtAccountName"/><br/>
 <label>Deposit: </label><input type="text" id="txtDeposit"/><br/>
-<input type="button" value="Create new account" id="btnCreate" onclick="onCreate();"/><br/>
+<input type="button" value="Create new account" id="btnCreate" onclick="newAccount.create();"/><br/>
 <textarea rows="5" cols="60" id="mytextarea"></textarea>
 </body>
 </html>
