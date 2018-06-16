@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="DOM and Events15 Puzzle:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/DOM_and_Events15_Puzzle_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="DOM and Events15 Puzzle/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="DOM and Events15 Puzzle" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
