@@ -1,28 +1,19 @@
-"use strict";
 $(document).ready(function () {
-    alert("23");
-});
-init = function () {
-    var puzzleArea = document.getElementById('puzzlearea');
-    var divs = puzzleArea.getElementsByTagName("div");
-
-    // initialize each piece
-    for (var i = 0; i < divs.length; i++) {
-        var div = divs[i];
-
+    $('#puzzlearea div').each(function (i) {
         // calculate x and y for this piece
         var x = ((i % 4) * 100);
         var y = (Math.floor(i / 4) * 100);
 
         // set basic style and background
-        div.className = "puzzlepiece";
-        div.style.left = x + 'px';
-        div.style.top = y + 'px';
-        div.style.backgroundImage = 'url("background.jpg")';
-        div.style.backgroundPosition = -x + 'px ' + (-y) + 'px';
+        this.className = "puzzlepiece";
+        this.id= "puzzlepiece";
+        this.style.left = x + 'px';
+        this.style.top = y + 'px';
+        this.style.backgroundImage = 'url("background.jpg")';
+        this.style.backgroundPosition = -x + 'px ' + (-y) + 'px';
 
         // store x and y for later
-        div.x = x;
-        div.y = y;
-    }
-};
+        this.x = x;
+        this.y = y;
+    });
+});
