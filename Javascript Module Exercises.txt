@@ -21,7 +21,7 @@ document.write(x);
 
 -> RESULT: undified889101
 
-
+//////////////////////////////////////////////////
 2. Define Global Scope and Local Scope in Javascript.
 Global Scope: A variable declared outside a function, becomes GLOBAL.
 A global variable has global scope: All scripts and functions on a web page can access it. 
@@ -31,6 +31,7 @@ Local variables have local scope: They can only be accessed within the function.
 Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
 Local variables are created when a function starts, and deleted when the function is completed.
 
+//////////////////////////////////////////////////
 3. Consider the following structure of Javascript code:
 // Scope A
 var a=5;
@@ -40,12 +41,18 @@ function XFunc () {
 	// Scope C
 	};
 };
-(a) Do statements in Scope A have access to variables defined in Scope B and C?
-(b) Do statements in Scope B have access to variables defined in Scope A?
-(c) Do statements in Scope B have access to variables defined in Scope C?
+(a) Do statements in Scope A have access to variables defined in Scope B and C? 
+-> NO
+(b) Do statements in Scope B have access to variables defined in Scope A? 
+->YES
+(c) Do statements in Scope B have access to variables defined in Scope C? 
+-> NO
 (d) Do statements in Scope C have access to variables defined in Scope A?
+-> YES
 (e) Do statements in Scope C have access to variables defined in Scope B?
-2
+-> YES
+
+//////////////////////////////////////////////////
 4. What will be printed by the following (answer without running it)?
 var x = 9;
 function myFunction() {
@@ -55,6 +62,7 @@ document.write(myFunction()); -> RESULT: 81
 x = 5;
 document.write(myFunction()); -> RESULT: 25
 
+//////////////////////////////////////////////////
 5.
 var foo = 1;
 function bar() {
@@ -67,13 +75,14 @@ bar();
 What will the alert print out? (Answer without running the code. Remember ‘hoisting’.)?
 -> RESULT: 10
 
+//////////////////////////////////////////////////
 6. Consider the following definition of an add( ) function to increment a counter variable:
 var add = (function () {
-var counter = 0;
-return function () {
-return counter += 1;
-}
- })();
+	var counter = 0;
+	return function () {
+		return counter += 1;
+	}
+})();
 Modify the above module to define a count object with two methods: add( ) and reset( ). The count.add( ) method
 adds one to the counter (as above). The count.reset( ) method sets the counter to 0.
 ->
@@ -89,9 +98,12 @@ var count = (function () {
   }
 })();
 
+//////////////////////////////////////////////////
 7. In the definition of add( ) shown in question 6, identify the "free" variable. In the context of a function closure,
 what is a "free" variable?
+-> free variable is "counter". free variable is the variable that a function can access from outer scope and not passed to it as a parameter
 
+//////////////////////////////////////////////////
 8. The add( ) function defined in question 6 always adds 1 to the counter each time it is called. Write a definition
 of a function make_adder(inc), whose return value is an add function with increment value inc (instead of 1). Here
 is an example of using this function:
@@ -113,11 +125,15 @@ add5();
 add5();
 add5();
 
+//////////////////////////////////////////////////
 9. Suppose you are given a file of Javascript code containing a list of many function and variable declarations. All of
 these function and variable names will be added to the Global Javascript namespace. What simple modification to
 the Javascript file can remove all the names from the Global namespace?
-3
 
+-> use Module pattern
+
+
+//////////////////////////////////////////////////
 10. Using the Revealing Module Pattern, write a Javascript definition of a Module that creates an Employee Object
 with the following fields and methods:
 Private Field: name
@@ -132,9 +148,116 @@ Private Method: getName( )
 Public Method: increaseSalary(percentage) // uses private getSalary( )
 Public Method: incrementAge( ) // uses private getAge( )
 
+->
+var Employee = (function () {
+            var name;
+            var age;
+            var salary;
+            var setAge = function (newAge) {
+                age = newAge;
+            };
+            var setSalary = function (newSalary) {
+                salary = newSalary;
+            };
+            var setName = function (newName) {
+                name = newName;
+            };
+            var getAge = function () {
+                return age;
+            };
+            var getSalary = function () {
+                return salary;
+            };
+            var getName = function () {
+                return name;
+            };
+            var increaseSalary = function (percentage) {
+                return getSalary() * (1 + precentage/100);
+            };
+            var incrementAge = function () {
+                return getAge() + 1;
+            };
+            return {
+                setAge: setAge,
+                setSalary: setSalary,
+                setName: setName,
+                increaseSalary: increaseSalary,
+                incrementAge: incrementAge
+            };
+})();
+
+//////////////////////////////////////////////////
 11. Rewrite your answer to Question 10 using the Anonymous Object Literal Return Pattern.
 
+var Employee = (function () {
+            var name;
+            var age;
+            var salary;
+            var getAge = function () {
+                return age;
+            };
+            var getSalary = function () {
+                return salary;
+            };
+            return {
+                setAge: function (newAge) {
+                    age = newAge;
+                },
+                setSalary: function (newSalary) {
+                    salary = newSalary;
+                },
+                setName: function (newName) {
+                    name = newName;
+                },
+                increaseSalary: function (percentage) {
+                    return getSalary() * (1 + precentage/100);
+                },
+                incrementAge: function () {
+                    return getAge() + 1;
+                }
+            };
+})();
+//////////////////////////////////////////////////
 12. Rewrite your answer to Question 10 using the Stacked Locally Scoped Object Literal Pattern.
 
+var Employee = (function () {
+            var name;
+            var age;
+            var salary;
+            var getAge = function () {
+                return age;
+            };
+            var getSalary = function () {
+                return salary;
+            };
+            var myObject= {
+                setAge: function (newAge) {
+                    age = newAge;
+                },
+                setSalary: function (newSalary) {
+                    salary = newSalary;
+                },
+                setName: function (newName) {
+                    name = newName;
+                },
+                increaseSalary: function (percentage) {
+                    return getSalary() * (1 + precentage/100);
+                },
+                incrementAge: function () {
+                    return getAge() + 1;
+                }
+            };
+            return myObject;
+})();
+//////////////////////////////////////////////////
 13. Write a few Javascript instructions to extend the Module of Question 10 to have a public address field and
 public methods setAddress(newAddress) and getAddress( ).
+
+->
+Employee.address;
+Employee.setAddress=function(newAddress){
+	return address=newAddress;
+};
+Employee.getAddress=function(){
+	return address;
+}
